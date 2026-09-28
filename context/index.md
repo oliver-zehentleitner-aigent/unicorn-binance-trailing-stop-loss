@@ -30,6 +30,8 @@
 
 ## E
 
+- [engines.md](engines.md) — the engine modes: why `jump-in-and-trail` exists for isolated margin only
+
 ## F
 
 - [fail-loud.md](fail-loud.md) — why `update_stop_loss_asset_amount` fails loud instead of letting a bare unpack crash silently, and the Cython strict-typing bugs found alongside it
@@ -54,7 +56,7 @@
 
 ## O
 
-- [open-questions.md](open-questions.md) — two things found during this pass that aren't explained anywhere and need a maintainer answer
+- [open-questions.md](open-questions.md) — the uncapped retry on Binance error `-2010`: why it is there is lost, whether to cap it is still to decide
 
 ## P
 
