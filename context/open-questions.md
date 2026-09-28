@@ -1,6 +1,6 @@
 # Open questions
 
-Found during a retrospective pass (2026-07) — genuinely unknown, not resolved by code, commit history, or existing docs. Flagging rather than guessing (per Keep the Why rule 1).
+Found during a retrospective pass (2026-07) — genuinely unknown, not resolved by code, commit history, or existing docs. Flagging rather than guessing (per Keep the Why rule 1). The second one, on `jump-in-and-trail`, was answered by the maintainer on 2026-09-28 and moved to `engines.md`.
 
 ## Uncapped retry loop on Binance error `-2010`
 
@@ -8,19 +8,12 @@ Found during a retrospective pass (2026-07) — genuinely unknown, not resolved 
 **Type:** undefined — open question awaiting maintainer input, not yet classifiable as decision/workaround/incident/constraint
 **Status:** open
 **Evidence:** unknown
+**Source:** retrospective pass, 2026-07; maintainer, 2026-09-28 — the original reason is not known any more
 **See:** fail-loud.md#update_stop_loss_asset_amount-fails-loud-instead-of-crashing-silently-deep-in-the-engine-thread — a89d2f74-2078-411c-bf32-a36a33cfcec2 — as of 2026-09-28
 
 `manager.py` (~lines 573-580), inside `create_stop_loss_order`: on Binance error code `-2010`, the code does `time.sleep(5)` and loops (`while order_is_placed is False`) with no retry cap — indefinite retry on a fixed 5-second interval. Other error codes `return False` immediately instead of retrying.
 
 **Why this needs an answer:** if `-2010` ("insufficient balance" in Binance's error scheme, among other cases) can also fire for a *permanent* condition, not just a transient one, this retries forever rather than failing loud — which would be inconsistent with the fail-loud pattern documented in `fail-loud.md`. Unknown whether `-2010` is scoped narrowly enough here that infinite retry is actually safe, or whether this needs a cap.
 
-## Why `jump-in-and-trail` is margin-only
+**Asked, 2026-09-28:** the original reason for the uncapped retry is not recoverable — the maintainer no longer knows it, and nobody else does. What is left is a decision for the future, not a lost fact to find: keep the loop, cap it, or treat the `-2010` cases apart. One plausible purpose is bridging the moment after the previous stop-loss order is cancelled, while the asset is still locked; but `-2010` also covers an order that would trigger immediately — the price already below the stop — and there the loop would retry for as long as the price stays there, with no stop-loss order in place.
 
-**Id:** 18ccb9bd-f183-4fb7-afdb-3cee6b0cc8e6
-**Type:** undefined — open question awaiting maintainer input, not yet classifiable as decision/workaround/incident/constraint
-**Status:** open
-**Evidence:** unknown
-
-The `jump-in-and-trail` engine mode is described (README, `meta.yaml`) as "still experimental, only available for Isolated Margin." Commit history for it (`d1ef241`, `6b0942e`, `acb2c88`, etc.) has only terse subject lines ("jump-in-and-trail", "integration of smart entry") with no design rationale in the commit bodies.
-
-**Why this needs an answer:** it's unclear whether spot/futures support for this mode was tried and rejected, is simply not built yet, or is scoped out for a reason specific to margin's borrow mechanics (`borrow_threshold` is required for margin — see `AGENTS.md`'s Architecture section). Worth asking directly rather than inferring from the absence of evidence.
