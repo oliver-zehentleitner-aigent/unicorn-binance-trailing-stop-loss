@@ -4,9 +4,11 @@ Found during a retrospective pass (2026-07) — genuinely unknown, not resolved 
 
 ## Uncapped retry loop on Binance error `-2010`
 
+**Id:** 0ee4ef2c-e5b1-4c08-9cc6-622f82870797
 **Type:** undefined — open question awaiting maintainer input, not yet classifiable as decision/workaround/incident/constraint
 **Status:** open
 **Evidence:** unknown
+**See:** fail-loud.md#update_stop_loss_asset_amount-fails-loud-instead-of-crashing-silently-deep-in-the-engine-thread — a89d2f74-2078-411c-bf32-a36a33cfcec2 — as of 2026-09-28
 
 `manager.py` (~lines 573-580), inside `create_stop_loss_order`: on Binance error code `-2010`, the code does `time.sleep(5)` and loops (`while order_is_placed is False`) with no retry cap — indefinite retry on a fixed 5-second interval. Other error codes `return False` immediately instead of retrying.
 
@@ -14,6 +16,7 @@ Found during a retrospective pass (2026-07) — genuinely unknown, not resolved 
 
 ## Why `jump-in-and-trail` is margin-only
 
+**Id:** 18ccb9bd-f183-4fb7-afdb-3cee6b0cc8e6
 **Type:** undefined — open question awaiting maintainer input, not yet classifiable as decision/workaround/incident/constraint
 **Status:** open
 **Evidence:** unknown

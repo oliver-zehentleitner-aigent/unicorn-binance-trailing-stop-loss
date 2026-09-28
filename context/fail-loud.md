@@ -2,6 +2,7 @@
 
 ## `update_stop_loss_asset_amount` fails loud instead of crashing silently deep in the engine thread
 
+**Id:** a89d2f74-2078-411c-bf32-a36a33cfcec2
 **Type:** incident
 **Status:** active
 **Evidence:** confirmed
