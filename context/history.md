@@ -22,6 +22,7 @@ This repo once had a proprietary licensing layer: `license='LSOSL - LUCIT Synerg
 **Status:** active
 **Evidence:** confirmed
 **Source:** commits `5ef6695`, `b183472`, `759ffd3`
+**See:** https://github.com/oliver-zehentleitner/unicorn-binance-rest-api — d4ff6265-1661-4e71-9e26-1048a4088bb0 — as of 2026-09-28
 
 - CI initializes against `binance.us`, not `binance.com` — GitHub Actions runners are US-based and Binance blocks `binance.com` access from restricted (US) locations. Same reasoning as UBRA's and UBWA's unit tests.
 - `build_wheels.yml` previously only got Windows wheels to PyPI — `actions/upload-artifact@v4` stopped merging same-named artifacts across OSes silently, so Linux/Mac wheel uploads were overwritten instead of coexisting. Fixed with per-OS artifact names.
