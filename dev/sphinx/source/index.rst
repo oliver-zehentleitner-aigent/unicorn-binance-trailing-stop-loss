@@ -11,6 +11,8 @@ Welcome to unicorn-binance-trailing-stop-loss's documentation!
    :caption: Contents:
 
    Readme <readme.md>
+   Why this project is built this way <context/index.md>
+   Keep the Why Dashboard <https://oliver-zehentleitner.github.io/unicorn-binance-trailing-stop-loss/keep-the-why-dashboard/>
    CLI <cli.md>
    Modules <modules.rst>
    ChangeLog <changelog.md>
@@ -19,6 +21,12 @@ Welcome to unicorn-binance-trailing-stop-loss's documentation!
    License <license.rst>
    Security <security.md>
 
+
+.. toctree::
+   :hidden:
+   :glob:
+
+   context/*
 
 Indices and tables
 ==================
