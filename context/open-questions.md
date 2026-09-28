@@ -4,6 +4,7 @@ Found during a retrospective pass (2026-07) — genuinely unknown, not resolved 
 
 ## Uncapped retry loop on Binance error `-2010`
 
+**Id:** 0ee4ef2c-e5b1-4c08-9cc6-622f82870797
 **Type:** undefined — open question awaiting maintainer input, not yet classifiable as decision/workaround/incident/constraint
 **Status:** open
 **Evidence:** unknown
@@ -14,6 +15,7 @@ Found during a retrospective pass (2026-07) — genuinely unknown, not resolved 
 
 ## Why `jump-in-and-trail` is margin-only
 
+**Id:** 18ccb9bd-f183-4fb7-afdb-3cee6b0cc8e6
 **Type:** undefined — open question awaiting maintainer input, not yet classifiable as decision/workaround/incident/constraint
 **Status:** open
 **Evidence:** unknown

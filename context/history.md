@@ -4,10 +4,12 @@
 
 > Superseded — repo now lives under `oliver-zehentleitner`, MIT-licensed.
 
+**Id:** 98990d11-0e08-4386-8146-10f85b666883
 **Type:** decision
 **Status:** superseded
 **Evidence:** confirmed
 **Source:** commit `4c14327` "Merge branch 'LUCIT-Systems-and-Development:master' into master"; commit `2d56481`
+**Superseded by:** https://github.com/oliver-zehentleitner/unicorn-binance-suite — 2749fc08-cdca-456b-a8bd-fd4b646ff64c — as of 2026-09-28
 
 This repo once had a proprietary licensing layer: `license='LSOSL - LUCIT Synergetic Open Source License'`, with `lucit-licensing-python` as a dependency and dedicated `licensing_manager.py`/`licensing_exceptions.py`/`LucitLicensingManager` code. Commit `2d56481` ("Remove LUCIT branding, switch to MIT license, update Python support") removed the license code entirely, not just the branding — switched to plain MIT.
 
@@ -15,6 +17,7 @@ This repo once had a proprietary licensing layer: `license='LSOSL - LUCIT Synerg
 
 ## CI fixes from the same cleanup
 
+**Id:** edbe20a8-50ce-4e7a-9d72-94c80c60838f
 **Type:** workaround
 **Status:** active
 **Evidence:** confirmed
@@ -28,9 +31,11 @@ This repo once had a proprietary licensing layer: `license='LSOSL - LUCIT Synerg
 
 > Superseded — fixed in this pass.
 
+**Id:** 303ce07f-5f8a-48f4-9adc-add1297fa16b
 **Type:** decision
 **Status:** superseded
 **Evidence:** confirmed
 **Source:** commits `48f4450`, `0cb7324`; verified in `cli.py:47-49`
+**Superseded by:** none — a documentation correction, fixed in `AGENTS.md` in the same pass; no decision replaced it
 
 `AGENTS.md`'s "Notes & Gotchas" claimed CLI config files default to `~/.lucit/ubtsl_*.ini` ("legacy path — not renamed"). That's inaccurate: the config path was migrated to `~/.unicorn-binance-suite/config/` (commit `48f4450`), and the `.lucit` fallback path was deleted outright afterward (commit `0cb7324`, "Remove legacy .lucit path fallback — clean break") — there is no `.lucit` reference left in `cli.py`. Fixed in `AGENTS.md` alongside this history entry.
